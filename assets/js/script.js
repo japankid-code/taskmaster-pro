@@ -70,6 +70,13 @@ $(".list-group").on("click", "p", function() {
       .index();
     // update task in array
     tasks[status][index].text = text;
+    saveTasks(); // update localStorage
+    // recreate p ele
+    var taskP = $("<p>")
+      .addClass("m-1")
+      .text(text);
+    // replace textarea with p
+    $(this).replaceWith(taskP);
   })
 });
 
