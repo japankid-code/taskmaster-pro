@@ -56,6 +56,7 @@ $(".list-group").on("click", "p", function() {
   // click off the textarea
 });
 
+// value of text gets changed
 $(".list-group").on("blur", "textarea", function() {
   // get the textarea's current val
   var text = $(this)
