@@ -210,5 +210,13 @@ $("#trash").droppable({
   }
 });
 
+// add date picker to modal window
+$("#modalDueDate").datepicker({
+  minDate: 0
+});
+
+// add date picker to date edit
+
+
 // load tasks for the first time
 loadTasks();
