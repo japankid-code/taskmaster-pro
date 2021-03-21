@@ -5,8 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- bootstrap styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <!-- jQuery UI styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
   <title>Taskmaster Pro</title>
 </head>
 
@@ -34,8 +37,7 @@
         <!-- in progress start -->
         <div class="col-12 col-md-6 col-xl-3 mb-2">
           <h4 class="card-header bg-dark text-light">In Progress</h4>
-          <ul id="list-inProgress" class="list-group">
-            <li class="list-group-item"></ul>
+          <ul id="list-inProgress" class="list-group"></ul>
         </div>
         <!-- in progress end -->
         <!-- in review start -->
@@ -52,8 +54,8 @@
         <!-- done end -->
       </div>
       <div id="trash" class="mt-auto">
-        <div class="w-100 bg-danger p-3 text-center text-light display-4">
-          Drop Here to Remove.
+        <div class="w-100 bg-danger p-3 text-center text-light display-4 text-muted">
+          <h5>Drop Here to Remove.</h5>
         </div>
       </div>
     </main>
@@ -91,6 +93,7 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/script.js"></script>
