@@ -163,5 +163,36 @@ $("#remove-tasks").on("click", function() {
   saveTasks();
 });
 
+// make task lists sortable
+$(".card, .list-group").sortable({
+  connectWith: $(".card, .list-group"),
+  update: function(e) {
+    let tempArr = [];
+    // loop over current set of children in sortable list
+    $(this).children().each(function() {
+      let text = $(this)
+        .find("p")
+        .text()
+        .trim();
+      let date = $(this)
+        .find("span")
+        .text()
+        .trim();
+      // add tasks to temp array as an obj
+      tempArr.push({
+        text: text,
+        date: date
+      });
+    });
+  // trim dont list's ID to match obj props
+  let arrName = $(this)
+    .attr("id")
+    .replace("list-", "");
+  // update array on tasks' object and save
+  tasks[arrName] = tempArr;
+  saveTasks();
+  }
+});
+
 // load tasks for the first time
 loadTasks();
