@@ -9,18 +9,14 @@ var createTask = function(taskText, taskDate, taskList) {
   var taskP = $("<p>")
     .addClass("m-1")
     .text(taskText);
-
   // append span and p element to parent li
   taskLi.append(taskSpan, taskP);
-
-
   // append to ul list on the page
   $("#list-" + taskList).append(taskLi);
 };
 
 var loadTasks = function() {
   tasks = JSON.parse(localStorage.getItem("tasks"));
-
   // if nothing in localStorage, create a new object to track all task status arrays
   if (!tasks) {
     tasks = {
@@ -30,7 +26,6 @@ var loadTasks = function() {
       done: []
     };
   }
-
   // loop over object properties
   $.each(tasks, function(list, arr) {
     // then loop over sub-array
@@ -88,16 +83,13 @@ $(".list-group").on("click", "span", function() {
   var date = $(this)
     .text()
     .trim();
-
   // create new input element
   var dateInput = $("<input>")
     .attr("type", "text")
     .addClass("form-control")
     .val(date);
-
   // swap out elements
   $(this).replaceWith(dateInput);
-
   // automatically focus on new element
   dateInput.trigger("focus");
 });
