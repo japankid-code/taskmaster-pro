@@ -57,9 +57,7 @@ var auditTask = function(taskEl) {
 $(".list-group").on("click", "p", function() {
   var text = $(this).text();
   // clicking on the p will change it to a textarea
-  var textInput = $("<textarea>")
-    .addClass("form-control")
-    .val(text);
+  var textInput = $("<textarea>").addClass("form-control").val(text);
   $(this).replaceWith(textInput);
   textInput.trigger("focus");
   // click off the textarea
@@ -68,25 +66,16 @@ $(".list-group").on("click", "p", function() {
 // value of text gets changed
 $(".list-group").on("blur", "textarea", function() {
   // get the textarea's current val
-  var text = $(this)
-    .val()
-    .trim();
+  var text = $(this).val().trim();
   // get the parent ul's id
-  var status = $(this)
-    .closest(".list-group")
-    .attr("id")
-    .replace("list-", "");
+  var status = $(this).closest(".list-group").attr("id").replace("list-", "");
   // get the tasks's position in the list of other li els
-  var index = $(this)
-    .closest(".list-group-item")
-    .index();
+  var index = $(this).closest(".list-group-item").index();
   // update task in array
   tasks[status][index].text = text;
   saveTasks(); // update localStorage
   // recreate p ele
-  var taskP = $("<p>")
-    .addClass("m-1")
-    .text(text);
+  var taskP = $("<p>").addClass("m-1").text(text);
   // replace textarea with p
   $(this).replaceWith(taskP);
 })
@@ -146,19 +135,15 @@ $("#task-form-modal .btn-primary").click(function() {
   // get form values
   var taskText = $("#modalTaskDescription").val();
   var taskDate = $("#modalDueDate").val();
-
   if (taskText && taskDate) {
     createTask(taskText, taskDate, "toDo");
-
     // close modal
     $("#task-form-modal").modal("hide");
-
     // save in tasks array
     tasks.toDo.push({
       text: taskText,
       date: taskDate
     });
-
     saveTasks();
   }
 });
