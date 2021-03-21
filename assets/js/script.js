@@ -194,5 +194,21 @@ $(".card, .list-group").sortable({
   }
 });
 
+// make mr. trash droppable
+$("#trash").droppable({
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function(event, ui) {
+    ui.draggable.remove()
+    // removing a task from any list triggers a sortable update() i.e. saveTasks()
+  },
+  over: function(event, ui) {
+    console.log("over");
+  },
+  out: function(event, ui) {
+    console.log("out");
+  }
+});
+
 // load tasks for the first time
 loadTasks();
