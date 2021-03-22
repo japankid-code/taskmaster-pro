@@ -22,3 +22,22 @@ h6 {
 .dropover-active {
   background-color: rgba(0,0,0,0.5);
 }
+
+.bottom-trash {
+  opacity: 0.1;
+  color: #f1f1f1;
+  font-size: 3em;
+  font-family: 'Exo 2';
+  transform: translateY(80px);
+  transition: all .5s ease-out;
+  background-color: #ea2727b3;
+}
+
+.bottom-trash-drag {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.bottom-trash-active {
+  background-color: #ea2701;
+}

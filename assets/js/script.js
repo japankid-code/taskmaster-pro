@@ -51,7 +51,6 @@ var auditTask = function(taskEl) {
   else if (Math.abs(moment().diff(time, "days")) <= 2) {
     $(taskEl).addClass("list-group-item-warning");
   }
-  console.log(taskEl)
 }
 
 // adding the ability to edit tasks
@@ -160,8 +159,14 @@ $("#remove-tasks").on("click", function() {
 
 // make task lists sortable
 $(".card, .list-group").sortable({
-  activate: function() {$(this).addClass("dropover")},
-  deactivate: function () {$(this).removeClass("dropover")},
+  activate: function() {
+    $(this).addClass("dropover");
+    $(".bottom-trash").addClass("bottom-trash-drag");
+  },
+  deactivate: function () {
+    $(this).removeClass("dropover");
+    $(".bottom-trash").removeClass("bottom-trash-drag");
+  },
   over: function (e) {$(e.target).addClass("dropover-active")},
   out: function (e) {$(e.target).removeClass("dropover-active")},
   connectWith: $(".card, .list-group"),
@@ -169,21 +174,15 @@ $(".card, .list-group").sortable({
     let tempArr = [];
     // loop over current set of children in sortable list
     $(this).children().each(function() {
-      let text = $(this)
-        .find("p")
-        .text()
-        .trim();
-      let date = $(this)
-        .find("span")
-        .text()
-        .trim();
+      let text = $(this).find("p").text().trim();
+      let date = $(this).find("span").text().trim();
       // add tasks to temp array as an obj
       tempArr.push({
         text: text,
         date: date
       });
     });
-  // trim dont list's ID to match obj props
+  // trim down list's ID to match obj props
     let arrName = $(this)
       .attr("id")   
       .replace("list-", "");
@@ -200,10 +199,13 @@ $("#trash").droppable({
   drop: function(event, ui) {
     ui.draggable.remove()
     // removing a task from any list triggers a sortable update() i.e. saveTasks()
+    $(".bottom-trash").removeClass("bottom-trash-active");
   },
   over: function(event, ui) {
+    $(".bottom-trash").addClass("bottom-trash-active");
   },
   out: function(event, ui) {
+    $(".bottom-trash").removeClass("bottom-trash-active");
   }
 });
 
