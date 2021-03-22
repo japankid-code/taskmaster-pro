@@ -160,6 +160,10 @@ $("#remove-tasks").on("click", function() {
 
 // make task lists sortable
 $(".card, .list-group").sortable({
+  activate: function() {$(this).addClass("dropover")},
+  deactivate: function () {$(this).removeClass("dropover")},
+  over: function (e) {$(e.target).addClass("dropover-active")},
+  out: function (e) {$(e.target).removeClass("dropover-active")},
   connectWith: $(".card, .list-group"),
   update: function(e) {
     let tempArr = [];
@@ -180,13 +184,13 @@ $(".card, .list-group").sortable({
       });
     });
   // trim dont list's ID to match obj props
-  let arrName = $(this)
-    .attr("id")
-    .replace("list-", "");
+    let arrName = $(this)
+      .attr("id")   
+      .replace("list-", "");
   // update array on tasks' object and save
-  tasks[arrName] = tempArr;
-  saveTasks();
-  }
+    tasks[arrName] = tempArr;
+    saveTasks();
+  },
 });
 
 // make mr. trash droppable
