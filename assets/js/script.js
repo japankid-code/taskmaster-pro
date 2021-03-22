@@ -51,6 +51,7 @@ var auditTask = function(taskEl) {
   else if (Math.abs(moment().diff(time, "days")) <= 2) {
     $(taskEl).addClass("list-group-item-warning");
   }
+  console.log(taskEl)
 }
 
 // adding the ability to edit tasks
@@ -206,6 +207,13 @@ $("#trash").droppable({
 $("#modalDueDate").datepicker({
   minDate: 0
 });
+
+// timers for auditing tasks, runs every 30 mins
+setInterval(function() {
+  $(".card .list-group-item").each(function(index, el) {
+    auditTask(el);
+  })
+}, (1000 * 6) * 30);
 
 // load tasks for the first time
 loadTasks();
