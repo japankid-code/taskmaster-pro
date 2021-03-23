@@ -6,4 +6,4 @@ In case you were wondering, repo is [here](https://github.com/japankid-code/task
 
 ## mockup
 
-![mockup of site, intended features]()
+![mockup of site, intended features](taskmaster-preview.png)
